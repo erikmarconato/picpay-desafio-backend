@@ -3,10 +3,7 @@ package com.picpay.desafio_picpay.entities;
 import com.picpay.desafio_picpay.dtos.UserDto;
 import com.picpay.desafio_picpay.enums.UserEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "usuario")
@@ -14,6 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "typeUser")
 public class UserEntity {
 
     @Id
