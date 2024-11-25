@@ -3,6 +3,7 @@ package com.picpay.desafio_picpay.controllers;
 import com.picpay.desafio_picpay.exceptions.DocumentFoundException;
 import com.picpay.desafio_picpay.exceptions.EmailFoundException;
 import com.picpay.desafio_picpay.exceptions.TypeUserException;
+import com.picpay.desafio_picpay.exceptions.UserEmptyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -29,5 +30,10 @@ public class ControllerAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> handleHttpMessageNotReadableException (HttpMessageNotReadableException exception){
         return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).body("Tipo de usuário inválido. Os valores permitidos são: 'common' ou 'merchant', por favor digite todos os campos corretamente.");
+    }
+
+    @ExceptionHandler(UserEmptyException.class)
+    public ResponseEntity<String> handleUserEmptyException (UserEmptyException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 }

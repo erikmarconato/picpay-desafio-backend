@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/usuario_comum")
+@RequestMapping("/usuario")
 @CrossOrigin
 public class UserController {
 
@@ -16,6 +19,16 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> createCommonUser (@RequestBody UserDto userDto){
-        return userService.createCommonUser(userDto);
+        return userService.createUser(userDto);
+    }
+
+    @GetMapping
+    public List<UserDto> listAllUsers (){
+        return userService.listAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<UserDto> listUserById (@PathVariable Long id){
+        return userService.listUserById(id);
     }
 }
