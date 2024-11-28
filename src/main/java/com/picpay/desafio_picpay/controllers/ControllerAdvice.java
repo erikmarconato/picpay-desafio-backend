@@ -1,9 +1,6 @@
 package com.picpay.desafio_picpay.controllers;
 
-import com.picpay.desafio_picpay.exceptions.DocumentFoundException;
-import com.picpay.desafio_picpay.exceptions.EmailFoundException;
-import com.picpay.desafio_picpay.exceptions.TypeUserException;
-import com.picpay.desafio_picpay.exceptions.UserEmptyException;
+import com.picpay.desafio_picpay.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -35,5 +32,15 @@ public class ControllerAdvice {
     @ExceptionHandler(UserEmptyException.class)
     public ResponseEntity<String> handleUserEmptyException (UserEmptyException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<String> handleInsufficientBalanceException (InsufficientBalanceException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(UnauthorizedTransactionMerchantException.class)
+    public ResponseEntity<String> handleUnauthorizedTransactionMerchantException (UnauthorizedTransactionMerchantException exception){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.getMessage());
     }
 }

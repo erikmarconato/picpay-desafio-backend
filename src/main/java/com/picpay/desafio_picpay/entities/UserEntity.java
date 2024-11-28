@@ -5,13 +5,14 @@ import com.picpay.desafio_picpay.enums.UserEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "usuario")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "typeUser")
 public class UserEntity {
 
     @Id
@@ -22,7 +23,7 @@ public class UserEntity {
     @Column (name = "nome_completo", nullable = false)
     private String fullName;
 
-    @Column (name = "cpf/cnpj", nullable = false, unique = true)
+    @Column (name = "cpf_cnpj", nullable = false, unique = true)
     private String document;
 
     @Column (name = "email", nullable = false, unique = true)
@@ -35,6 +36,9 @@ public class UserEntity {
     @Column (name = "tipo_usuario", nullable = false)
     private UserEnum typeUser;
 
+    @Column (name = "saldo")
+    private BigDecimal balance = BigDecimal.valueOf(0);
+
     public UserEntity(UserDto userDto) {
         this.id = userDto.id();
         this.fullName = userDto.fullName();
@@ -42,5 +46,6 @@ public class UserEntity {
         this.email = userDto.email();
         this.password = userDto.password();
         this.typeUser = userDto.typeUser();
+        this.balance = userDto.balance();
     }
 }

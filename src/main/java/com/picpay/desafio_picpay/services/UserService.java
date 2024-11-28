@@ -42,7 +42,8 @@ public class UserService {
                 userEntity.getDocument(),
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                userEntity.getTypeUser()
+                userEntity.getTypeUser(),
+                userEntity.getBalance()
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(convertEntitytoDto);
@@ -58,7 +59,8 @@ public class UserService {
                 userEntity.getDocument(),
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                userEntity.getTypeUser()
+                userEntity.getTypeUser(),
+                userEntity.getBalance()
         )).toList();
     }
 
@@ -67,7 +69,7 @@ public class UserService {
         Optional<UserEntity> user = userRepository.findById(id);
 
         if (user.isEmpty()){
-            throw new UserEmptyException("Usuário com o id: " + id + "não encontrado.");
+            throw new UserEmptyException("Usuário com o id: " + id + " não encontrado.");
         }
 
         return user.map(userEntity -> new UserDto(
@@ -76,7 +78,8 @@ public class UserService {
                 userEntity.getDocument(),
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                userEntity.getTypeUser()
+                userEntity.getTypeUser(),
+                userEntity.getBalance()
         ));
     }
 }
