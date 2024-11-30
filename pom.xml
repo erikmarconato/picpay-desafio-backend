@@ -8,11 +8,11 @@
 		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.picpay</groupId>
+	<artifactId>desafio-picpay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>desafio-picpay</name>
+	<description>Desafio Backend PicPay Simplificado</description>
 	<url/>
 	<licenses>
 		<license/>

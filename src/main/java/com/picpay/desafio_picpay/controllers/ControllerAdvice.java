@@ -43,4 +43,9 @@ public class ControllerAdvice {
     public ResponseEntity<String> handleUnauthorizedTransactionMerchantException (UnauthorizedTransactionMerchantException exception){
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.getMessage());
     }
+
+    @ExceptionHandler(TransactionEmptyException.class)
+    public ResponseEntity<String> handleTransactionEmptyException (TransactionEmptyException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
 }
