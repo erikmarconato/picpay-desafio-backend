@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    Optional<UserDto> findByDocument(String document);
+    Optional<UserEntity> findByDocument(String document);
 
-    Optional<UserDto> findByEmail(String email);
+    Optional<UserEntity> findByEmail(String email);
 
     BigDecimal findByBalance(BigDecimal balance);
 }
